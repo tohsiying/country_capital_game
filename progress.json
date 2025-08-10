@@ -1,0 +1,108 @@
+{
+  "users": {
+    "Christine": {
+      "progress": {
+        "France": {
+          "right": 8,
+          "wrong": 0
+        },
+        "Kenya": {
+          "right": 16,
+          "wrong": 0
+        },
+        "Germany": {
+          "right": 8,
+          "wrong": 0
+        },
+        "India": {
+          "right": 12,
+          "wrong": 0
+        },
+        "Canada": {
+          "right": 5,
+          "wrong": 0
+        },
+        "Japan": {
+          "right": 10,
+          "wrong": 0
+        },
+        "Argentina": {
+          "right": 8,
+          "wrong": 0
+        },
+        "Australia": {
+          "right": 9,
+          "wrong": 0
+        },
+        "Egypt": {
+          "right": 11,
+          "wrong": 0
+        },
+        "Brazil": {
+          "right": 2,
+          "wrong": 0
+        },
+        "Solomon Islands": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Croatia": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Sierra Leone": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Belize": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Seychelles": {
+          "right": 2,
+          "wrong": 1
+        },
+        "Tonga": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Poland": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Eswatini": {
+          "right": 1,
+          "wrong": 3
+        },
+        "Samoa": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Palau": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Hungary": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Belarus": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Saint Vincent and the Grenadines": {
+          "right": 0,
+          "wrong": 3
+        },
+        "Angola": {
+          "right": 0,
+          "wrong": 3
+        }
+      }
+    },
+    "Vlad": {
+      "progress": {}
+    }
+  },
+  "active_user": "Christine"
+}
