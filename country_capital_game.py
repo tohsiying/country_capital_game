@@ -7,6 +7,8 @@ import pathlib
 from typing import List, Dict, Optional
 import requests
 import plotly.graph_objects as go
+import time
+import datetime
 
 # ---------- Config ----------
 # Anchor persistence to the script's directory to survive working directory changes
@@ -44,13 +46,26 @@ def _continent_from_region(region: str, subregion: str) -> str:
     # Central America and Caribbean grouped under North America for this app
     return "North America"
 
+def _normalize_continent_name(name: str) -> str:
+    """Return a canonical continent name used for comparisons and UI.
+
+    Normalizes by trimming whitespace. Case-insensitive comparisons are
+    performed at call sites as needed.
+    """
+    return (name or "").strip()
+
 @st.cache_data(ttl=60 * 60 * 24)
 def load_full_country_dataset() -> List[Dict]:
     try:
         resp = requests.get(
             "https://restcountries.com/v3.1/all",
             params={
-                "fields": "name,capital,region,subregion,unMember,cca2,flags",
+                # Request extra facts to power varied clues
+                "fields": (
+                    "name,capital,region,subregion,unMember,cca2,flags,"
+                    "population,area,landlocked,borders,languages,currencies,"
+                    "fifa,timezones,tld"
+                ),
             },
             timeout=20,
         )
@@ -105,6 +120,20 @@ def load_full_country_dataset() -> List[Dict]:
                 "political_fact": political_fact,
                 "cca2": cca2,
                 "flag": flag_png or flag_svg,
+                # Optional enrichment for clues (best-effort)
+                "population": int(item.get("population") or 0),
+                "area_km2": float(item.get("area") or 0.0),
+                "landlocked": bool(item.get("landlocked", False)),
+                "borders": list(item.get("borders") or []),
+                "languages": list((item.get("languages") or {}).values()),
+                "currencies": [
+                    c.get("name")
+                    for c in (item.get("currencies") or {}).values()
+                    if isinstance(c, dict) and c.get("name")
+                ],
+                "fifa": (item.get("fifa") or "").strip(),
+                "timezones": list(item.get("timezones") or []),
+                "tld": list(item.get("tld") or []),
             })
 
         # Deduplicate by country name and sort
@@ -232,6 +261,33 @@ def save_progress(state: Dict) -> None:
     )
 
 # ---------- Utility ----------
+def get_available_continents() -> List[str]:
+    return sorted({
+        _normalize_continent_name(c.get("continent", ""))
+        for c in COUNTRIES
+        if _normalize_continent_name(c.get("continent", ""))
+    })
+
+
+def get_current_pool() -> List[Dict]:
+    """Return the list of countries to play from based on current scope selection."""
+    scope = st.session_state.get("play_scope", "World")
+    if scope == "By continent":
+        selected = st.session_state.get("selected_continent")
+        if not selected:
+            continents = get_available_continents()
+            selected = continents[0] if continents else None
+            st.session_state["selected_continent"] = selected
+        if selected:
+            sel_norm = _normalize_continent_name(selected).lower()
+            pool = [
+                c for c in COUNTRIES
+                if _normalize_continent_name(c.get("continent", "")).lower() == sel_norm
+            ]
+            # Always return the filtered pool to avoid falling back to World unexpectedly
+            return pool
+    return COUNTRIES
+
 def pick_question(pool: List[Dict], exclude_recent=3) -> Dict:
     # choose a random country; avoid last few asked if possible
     recent = st.session_state.get("recent_questions", [])
@@ -245,23 +301,87 @@ def pick_question(pool: List[Dict], exclude_recent=3) -> Dict:
     return q
 
 def generate_clue(capital: str, attempt: int, country_data: Dict) -> str:
-    """Generate a clue based on the capital name, attempt number, and political facts."""
-    political_fact = country_data.get("political_fact", "")
-    
-    if attempt == 1:
-        # First clue: length, first letter, and political fact
-        letter_clue = f"The capital has {len(capital)} letters and starts with '{capital[0].upper()}'"
-        return f"{letter_clue}. Political fact: {political_fact}"
-    elif attempt == 2:
-        # Second clue: first and last letter, and political fact
-        letter_clue = f"The capital starts with '{capital[0].upper()}' and ends with '{capital[-1].upper()}'"
-        return f"{letter_clue}. Political fact: {political_fact}"
-    else:
-        # Third clue: show first 2-3 letters and political fact
-        letters_to_show = min(3, len(capital) // 2)
-        partial = capital[:letters_to_show]
-        letter_clue = f"The capital starts with '{partial.upper()}' and has {len(capital)} letters"
-        return f"{letter_clue}. Political fact: {political_fact}"
+    """Generate a clue focused on country facts (not capital spelling).
+
+    Facts include population, area, continent, landlocked/borders, languages, currencies,
+    timezones, top-level domains, and occasional political context.
+    """
+    country = (country_data.get("country") or "").strip()
+    continent = (country_data.get("continent") or "").strip()
+    political_fact = (country_data.get("political_fact") or "").strip()
+
+    population = int(country_data.get("population") or 0)
+    area_km2 = float(country_data.get("area_km2") or 0.0)
+    landlocked = bool(country_data.get("landlocked", False))
+    borders = list(country_data.get("borders") or [])
+    languages = [l for l in (country_data.get("languages") or []) if l]
+    currencies = [c for c in (country_data.get("currencies") or []) if c]
+    fifa = (country_data.get("fifa") or "").strip()
+    cca2 = (country_data.get("cca2") or "").strip().upper()
+    timezones = list(country_data.get("timezones") or [])
+    tlds = list(country_data.get("tld") or [])
+
+    facts: List[str] = []
+    # Geography and region
+    if continent:
+        facts.append(f"It's in {continent}.")
+    if population:
+        # Round population to nearest million for readability
+        if population >= 1_000_000:
+            millions = int(round(population / 1_000_000))
+            facts.append(f"Population is about {millions} million.")
+        else:
+            facts.append(f"Population is roughly {population:,}.")
+    if area_km2:
+        if area_km2 >= 1_000_000:
+            facts.append(f"Area is about {area_km2/1_000_000:.1f} million km².")
+        else:
+            facts.append(f"Area is about {int(round(area_km2)):,} km².")
+    # Geography details
+    coastland_text = ("It is landlocked." if landlocked else "It has a coastline.")
+    # We'll add this later with lower priority so more informative facts show first
+    if borders:
+        facts.append(f"It borders {len(borders)} countries.")
+    if languages:
+        facts.append("Language example: " + languages[0] + ".")
+    if currencies:
+        facts.append("Currency example: " + currencies[0] + ".")
+    if fifa:
+        facts.append(f"FIFA code: {fifa}.")
+    if cca2:
+        facts.append(f"ISO code: {cca2}.")
+    if timezones:
+        facts.append(f"Timezone example: {timezones[0]}.")
+    if tlds:
+        facts.append(f"Internet domain ends with '{tlds[0]}'.")
+    if political_fact and random.random() < 0.35:
+        facts.append(political_fact + ".")
+
+    # Add coastline info last to avoid dominating
+    facts.append(coastland_text)
+
+    # Prefer non-continent facts if any exist
+    non_continent_facts = [f for f in facts if not f.startswith("It's in ")]
+    pool = non_continent_facts if non_continent_facts else facts
+
+    if not pool:
+        pool = ["Think about its region, size, and neighbors."]
+
+    # Deterministic shuffle so attempts rotate different clues
+    seed_str = f"{country}|{capital}|facts|v2"
+    rnd = random.Random(seed_str)
+    pool_shuffled = list(pool)
+    rnd.shuffle(pool_shuffled)
+
+    # Return up to two different facts per attempt for richness
+    if len(pool_shuffled) == 1:
+        return pool_shuffled[0]
+    start = ((attempt - 1) * 2) % len(pool_shuffled)
+    first = pool_shuffled[start]
+    second = pool_shuffled[(start + 1) % len(pool_shuffled)]
+    if first == second:
+        return first
+    return f"{first} {second}"
 
 def continent_progress_summary(progress: Dict[str, Dict[str, int]]) -> Dict[str, int]:
     # Count countries with at least one correct ("right") answer
@@ -345,6 +465,27 @@ def compute_users_leaderboard(users_state: Dict, total_target: int = 197):
     rows.sort(key=lambda r: (-r["recognized"], -r["right"], -r["accuracy"], r["name"]))
     return rows
 
+
+def _compute_overall_stats(progress: Dict[str, Dict[str, int]]) -> Dict[str, int]:
+    """Return aggregate stats from a normalized progress dict.
+
+    Keys: total_right, total_wrong, attempts, recognized
+    """
+    progress = _normalize_progress_dict(progress or {})
+    total_right = sum(int(v.get("right", 0)) for v in progress.values())
+    total_wrong = sum(int(v.get("wrong", 0)) for v in progress.values())
+    attempts = total_right + total_wrong
+    recognized = 0
+    for c in COUNTRIES:
+        entry = progress.get(c["country"], {"right": 0, "wrong": 0})
+        if int(entry.get("right", 0)) > 0:
+            recognized += 1
+    return {
+        "total_right": total_right,
+        "total_wrong": total_wrong,
+        "attempts": attempts,
+        "recognized": recognized,
+    }
 
 def build_world_map_wrong_rate(progress: Dict[str, Dict[str, int]]) -> go.Figure:
     # Calculate totals and percents per continent (based on countries with any right answers)
@@ -590,6 +731,29 @@ def build_world_map_correct(progress: Dict[str, Dict[str, int]]) -> go.Figure:
     )
     return fig
 
+
+# ---------- Footer ----------
+def render_footer() -> None:
+    """Render a small footer indicating creation date and purpose."""
+    try:
+        stats = pathlib.Path(__file__).resolve().stat()
+        created_ts = getattr(stats, "st_birthtime", stats.st_ctime)
+    except Exception:
+        created_ts = time.time()
+    created_dt = datetime.datetime.fromtimestamp(created_ts)
+    created_str = created_dt.strftime("%B %d, %Y")
+
+    st.write("---")
+    st.markdown(
+        (
+            f"<div style='color:#64748b;font-size:12px;text-align:center;'>"
+            f"Created {created_str}. A vibe-coded passion project — built with GPT-5 and Cursor. "
+            f"Made for my love for countries and the world."
+            f"</div>"
+        ),
+        unsafe_allow_html=True,
+    )
+
 # ---------- App UI ----------
 st.set_page_config(page_title="Capital Gains: World Edition", layout="centered")
 
@@ -603,14 +767,24 @@ if st.session_state["show_intro"]:
     st.write("---")
     st.subheader("How it works")
     st.markdown(
-        "- 3 attempts per question; helpful clues appear after wrong answers.\n"
+        "- 3 attempts per question.\n"
         "- Progress saves locally to `progress.json` and supports multiple players.\n"
         "- Maps visualize what you've mastered and where to review.\n"
         "- A leaderboard tracks recognition, accuracy, and attempts."
     )
     if st.button("Start playing", type="primary"):
         st.session_state["show_intro"] = False
+        # initialize session timer at play start
+        st.session_state["session_start_ts"] = time.time()
+        # set baseline snapshot at session start (previous performance)
+        try:
+            initial_progress = load_progress().get("progress", {})
+            st.session_state["baseline_progress"] = _normalize_progress_dict(initial_progress)
+        except Exception:
+            st.session_state["baseline_progress"] = {}
         st.rerun()
+    # Footer on intro page
+    render_footer()
     st.stop()
 
 st.title("🌍 Capital Gains: World Edition")
@@ -639,12 +813,19 @@ if "progress" not in st.session_state:
     st.session_state["progress"] = (
         st.session_state["users_state"].get("users", {}).get(cu, {}).get("progress", {})
     )  # normalized later
+if "baseline_progress" not in st.session_state:
+    # baseline = snapshot of user's progress at the start of the session
+    st.session_state["baseline_progress"] = _normalize_progress_dict(st.session_state.get("progress", {}))
 if "score" not in st.session_state:
     st.session_state["score"] = 0
 if "wrong" not in st.session_state:
     st.session_state["wrong"] = 0
+if "play_scope" not in st.session_state:
+    st.session_state["play_scope"] = "World"
+if "selected_continent" not in st.session_state:
+    st.session_state["selected_continent"] = (get_available_continents()[0] if get_available_continents() else None)
 if "question" not in st.session_state:
-    st.session_state["question"] = pick_question(COUNTRIES)
+    st.session_state["question"] = pick_question(get_current_pool())
 if "clear_input" not in st.session_state:
     st.session_state["clear_input"] = False
 if "attempts" not in st.session_state:
@@ -657,6 +838,87 @@ if "new_player_input_counter" not in st.session_state:
     st.session_state["new_player_input_counter"] = 0
 if "rename_input_counter" not in st.session_state:
     st.session_state["rename_input_counter"] = 0
+if "session_start_ts" not in st.session_state:
+    # Fallback initialization in case user bypassed intro or on first load
+    st.session_state["session_start_ts"] = time.time()
+if "show_summary_page" not in st.session_state:
+    st.session_state["show_summary_page"] = False
+if "session_end_ts" not in st.session_state:
+    st.session_state["session_end_ts"] = None
+
+# Render summary page when requested
+if st.session_state.get("show_summary_page", False):
+    st.title("📊 Session Summary")
+    # freeze end time if not set
+    if not st.session_state.get("session_end_ts"):
+        st.session_state["session_end_ts"] = time.time()
+    duration_s = max(0, int(st.session_state["session_end_ts"] - st.session_state.get("session_start_ts", time.time())))
+    h = duration_s // 3600
+    m = (duration_s % 3600) // 60
+    s = duration_s % 60
+    duration_str = (f"{h:02d}:{m:02d}:{s:02d}" if h > 0 else f"{m:02d}:{s:02d}")
+
+    baseline = _normalize_progress_dict(st.session_state.get("baseline_progress", {}))
+    current = _normalize_progress_dict(st.session_state.get("progress", {}))
+    bstats = _compute_overall_stats(baseline)
+    cstats = _compute_overall_stats(current)
+
+    delta_right = cstats["total_right"] - bstats["total_right"]
+    delta_wrong = cstats["total_wrong"] - bstats["total_wrong"]
+    delta_attempts = cstats["attempts"] - bstats["attempts"]
+    delta_recognized = cstats["recognized"] - bstats["recognized"]
+
+    session_right = int(st.session_state.get("score", 0))
+    session_wrong = int(st.session_state.get("wrong", 0))
+    session_attempts = max(0, session_right + session_wrong)
+    session_acc = int(round((session_right / session_attempts) * 100)) if session_attempts else 0
+
+    acc_before = int(round((bstats["total_right"] / bstats["attempts"]) * 100)) if bstats["attempts"] else 0
+    acc_after = int(round((cstats["total_right"] / cstats["attempts"]) * 100)) if cstats["attempts"] else 0
+    delta_acc = acc_after - acc_before
+
+    # Encouraging message
+    if delta_recognized > 0:
+        encouragement = f"Fantastic! You unlocked {delta_recognized} new {'country' if delta_recognized==1 else 'countries'} this session. Keep going!"
+    elif session_acc >= 80 and session_attempts >= 5:
+        encouragement = "Great accuracy this session — you’re really mastering these capitals!"
+    elif session_attempts >= 10:
+        encouragement = "Awesome stamina — consistency is how pros are made. Keep it up!"
+    else:
+        encouragement = "Nice work — every attempt builds your map mastery."
+
+    st.caption(f"Session duration: {duration_str}")
+
+    c1, c2 = st.columns(2)
+    with c1:
+        st.subheader("This session")
+        st.metric("Correct", session_right)
+        st.metric("Wrong", session_wrong)
+        st.metric("Accuracy", f"{session_acc}%")
+    with c2:
+        st.subheader("Overall (before → after)")
+        st.metric("Recognized countries", cstats["recognized"], delta=delta_recognized)
+        st.metric("Total answers", cstats["attempts"], delta=delta_attempts)
+        st.metric("Overall accuracy", f"{acc_after}%", delta=delta_acc)
+
+    st.success(encouragement)
+
+    st.write("")
+    if st.button("Back to game", type="primary"):
+        # start a fresh session using current progress as new baseline
+        st.session_state["show_summary_page"] = False
+        st.session_state["session_start_ts"] = time.time()
+        st.session_state["session_end_ts"] = None
+        st.session_state["baseline_progress"] = _normalize_progress_dict(st.session_state.get("progress", {}))
+        st.session_state["score"] = 0
+        st.session_state["wrong"] = 0
+        st.session_state["attempts"] = 0
+        st.rerun()
+
+    # Footer on summary page
+    render_footer()
+    st.stop()
+
 
 # Sidebar controls
 with st.sidebar:
@@ -691,6 +953,10 @@ with st.sidebar:
         st.session_state["score"] = 0
         st.session_state["wrong"] = 0
         st.session_state["attempts"] = 0
+        # restart session timer on user switch
+        st.session_state["session_start_ts"] = time.time()
+        # reset baseline to new user's current progress
+        st.session_state["baseline_progress"] = _normalize_progress_dict(st.session_state.get("progress", {}))
         users_state["active_user"] = selected_user
         save_users_state(users_state)
         st.session_state["users_state"] = users_state
@@ -715,6 +981,10 @@ with st.sidebar:
             st.session_state["score"] = 0
             st.session_state["wrong"] = 0
             st.session_state["attempts"] = 0
+            # start timer for the new player's session
+            st.session_state["session_start_ts"] = time.time()
+            # baseline is empty for a brand new player
+            st.session_state["baseline_progress"] = {}
             # Clear input by rotating key on next render
             st.session_state["new_player_input_counter"] += 1
             # Ensure radio selects the new player on next render
@@ -782,15 +1052,43 @@ with st.sidebar:
             st.session_state["score"] = 0
             st.session_state["wrong"] = 0
             st.session_state["attempts"] = 0
+            # restart timer after switching to next available user
+            st.session_state["session_start_ts"] = time.time()
+            # reset baseline to the selected next user's progress
+            st.session_state["baseline_progress"] = _normalize_progress_dict(st.session_state.get("progress", {}))
             # Ensure radio selects the new player on next render
             st.session_state["pending_select_user"] = next_user
             st.success(f"Player '{current}' removed.")
             st.rerun()
 
     st.write("---")
+    st.header("Mode")
+    prev_scope = st.session_state.get("play_scope", "World")
+    prev_cont = st.session_state.get("selected_continent")
+    scope_value = st.radio("Play scope", options=["World", "By continent"], index=(0 if prev_scope == "World" else 1), key="play_scope")
+    if scope_value == "By continent":
+        continents = get_available_continents()
+        # Ensure a valid selection exists
+        if (prev_cont not in continents) and continents:
+            st.session_state["selected_continent"] = continents[0]
+            prev_cont = continents[0]
+        # Bind purely via key so the widget always reflects session state; avoid fragile index math
+        st.selectbox("Continent", options=continents, key="selected_continent")
+
+    if (prev_scope != st.session_state.get("play_scope")) or (prev_cont != st.session_state.get("selected_continent")):
+        st.session_state["question"] = pick_question(get_current_pool())
+        st.session_state["attempts"] = 0
+        st.session_state["show_next_button"] = False
+        st.session_state["feedback"] = ""
+        st.session_state["input_counter"] = st.session_state.get("input_counter", 0) + 1
+        st.session_state["clear_input"] = True
+        # Ensure the newly scoped question renders immediately
+        st.rerun()
+
+    st.write("---")
     st.header("Session")
     if st.button("New random question"):
-        st.session_state["question"] = pick_question(COUNTRIES)
+        st.session_state["question"] = pick_question(get_current_pool())
         st.session_state["clear_input"] = True
         st.session_state["feedback"] = ""
         st.session_state["attempts"] = 0
@@ -799,6 +1097,13 @@ with st.sidebar:
         st.session_state["progress"] = {}
         save_progress({"progress": st.session_state["progress"]})
         st.success("Progress reset.")
+        # When progress resets mid-session, also reset baseline to reflect the new starting point
+        st.session_state["baseline_progress"] = {}
+    if st.button("End session"):
+        # show summary page comparing current session vs baseline
+        st.session_state["show_summary_page"] = True
+        st.session_state["session_end_ts"] = time.time()
+        st.rerun()
     st.write("---")
     st.subheader("Persistence")
     st.write(f"Progress file: `{DATA_FILE.name}`")
@@ -818,14 +1123,54 @@ with st.sidebar:
         st.write("No saved progress yet")
 
 # main card
+# Ensure the current question respects the current scope/continent
+current_pool = get_current_pool()
 q = st.session_state["question"]
+if current_pool:
+    pool_country_names = {c["country"] for c in current_pool}
+    if q.get("country") not in pool_country_names:
+        # If the stored question is out-of-scope (e.g., after a scope change), replace it
+        st.session_state["question"] = pick_question(current_pool)
+        q = st.session_state["question"]
 avatar = q.get("avatar", "👑")
 
 col1, col2 = st.columns([1, 3])
 with col1:
     st.markdown(f"<div style='font-size:72px;text-align:center'>{avatar}</div>", unsafe_allow_html=True)
 with col2:
-    st.subheader(f"What is the capital of **{q['country']}**?")
+    header_left, header_right = st.columns([3, 1])
+    with header_left:
+        st.subheader(f"What is the capital of **{q['country']}**?")
+    with header_right:
+        _start_ts_hdr = int(st.session_state.get("session_start_ts", time.time()))
+        _timer_html_inline = """
+        <div style='display:flex;justify-content:flex-end;'>
+          <div style='display:inline-block;padding:8px 14px;border:1px solid #e5e7eb;border-radius:12px;background:#ffffff;'>
+            <div style='font-size:12px;color:#64748b;line-height:1;'>Session timer</div>
+            <div id='session-timer' style='font-size:28px;font-weight:700;color:#0f172a;line-height:1.1;'>--:--</div>
+          </div>
+        </div>
+        <script>
+          const __start = __START_TS__ * 1000;
+          function __fmt(ms){
+            let s = Math.floor(ms/1000);
+            const h = Math.floor(s/3600); s %= 3600;
+            const m = Math.floor(s/60); s %= 60;
+            const hh = h > 0 ? String(h).padStart(2,'0') + ':' : '';
+            const mm = String(m).padStart(2,'0');
+            const ss = String(s).padStart(2,'0');
+            return hh + mm + ':' + ss;
+          }
+          function __tick(){
+            const el = document.getElementById('session-timer');
+            if(!el) return;
+            el.textContent = __fmt(Date.now() - __start);
+          }
+          __tick();
+          setInterval(__tick, 1000);
+        </script>
+        """
+        components.html(_timer_html_inline.replace("__START_TS__", str(_start_ts_hdr)), height=80, scrolling=False)
     
     # Show attempts remaining
     attempts_remaining = 3 - st.session_state["attempts"]
@@ -834,16 +1179,22 @@ with col2:
     
     # Use a form so Enter can submit when answering; show a right-aligned Next button when available
     with st.form(key=f"answer_form_{st.session_state.get('input_counter', 0)}"):
-        # Use a unique key for the text input that changes when we want to clear it
-        input_key = f"input_{st.session_state.get('input_counter', 0)}"
-        user_input = st.text_input(
-            "Your answer",
-            key=input_key,
-            placeholder="Type the capital and press Enter",
-        )
+        # Determine state first so we can hide the input when showing Next
+        is_next_state = st.session_state.get("show_next_button", False)
+
+        # Only render the text input when awaiting an answer
+        if not is_next_state:
+            # Use a unique key for the text input that changes when we want to clear it
+            input_key = f"input_{st.session_state.get('input_counter', 0)}"
+            user_input = st.text_input(
+                "Your answer",
+                key=input_key,
+                placeholder="Type the capital and press Enter",
+            )
+        else:
+            user_input = ""
 
         # Single submit target: label toggles based on state so Enter always triggers it
-        is_next_state = st.session_state.get("show_next_button", False)
         primary_label = "🎯 Next Question" if is_next_state else "Submit"
         trigger = st.form_submit_button(primary_label, type="primary")
 
@@ -885,9 +1236,8 @@ with col2:
                 attempts_left = 3 - st.session_state["attempts"]
 
                 if attempts_left > 0:
-                    # Generate clue for next attempt
-                    clue = generate_clue(q["capital"], st.session_state["attempts"], q)
-                    st.session_state["feedback"] = f"❌ Not quite right. {clue} (Attempts remaining: {attempts_left})"
+                    # No clues; just show attempts remaining
+                    st.session_state["feedback"] = f"❌ Not quite right. (Attempts remaining: {attempts_left})"
                 else:
                     # No more attempts: reveal correct answer and show Next button
                     st.session_state["feedback"] = f"❌ The correct answer was **{q['capital']}**."
@@ -898,7 +1248,7 @@ with col2:
                     st.rerun()
 
         if trigger and st.session_state.get("show_next_button", False):
-            st.session_state["question"] = pick_question(COUNTRIES)
+            st.session_state["question"] = pick_question(get_current_pool())
             st.session_state["attempts"] = 0
             st.session_state["show_next_button"] = False
             st.session_state["feedback"] = ""
@@ -926,8 +1276,8 @@ st.subheader("Progress maps")
 st.session_state["progress"] = _normalize_progress_dict(st.session_state.get("progress", {}))
 summary = continent_progress_summary(st.session_state["progress"])
 
-# Two maps in tabs: Correct progress and Wrong rate
-tab1, tab2 = st.tabs(["Correct progress", "Wrong rate"])
+# Two maps in tabs: Progress rate and Error rate
+tab1, tab2 = st.tabs(["Progress rate", "Error rate"])
 with tab1:
     fig_correct = build_world_map_correct(st.session_state["progress"])
     st.plotly_chart(fig_correct, use_container_width=True)
@@ -1045,8 +1395,9 @@ for cont in sorted(summary):
     st.write(f"**{cont}** — {got}/{total} ({pct}%)")
 
 st.write("---")
-st.subheader("Detailed progress (sample countries)")
-for c in COUNTRIES:
+st.subheader("Detailed progress (but also a cheatsheet)")
+visible_countries = get_current_pool()
+for c in visible_countries:
     entry = st.session_state["progress"].get(c["country"], {"right": 0, "wrong": 0})
     right = int(entry.get("right", 0))
     wrong = int(entry.get("wrong", 0))
@@ -1055,4 +1406,6 @@ for c in COUNTRIES:
     st.write(f"{c['country']}: {c['capital']} — Right: {right} | Wrong: {wrong} | Wrong rate: {wrong_rate}%")
 
 st.write("")
-st.info("This is a small prototype. Ask me to: randomise questions, add hints, show time-to-mastery, support full country list, or use images for avatars.")
+
+# Always show footer at end of main page
+render_footer()

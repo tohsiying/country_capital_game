@@ -3,35 +3,35 @@
     "Christine": {
       "progress": {
         "France": {
-          "right": 8,
-          "wrong": 0
+          "right": 9,
+          "wrong": 4
         },
         "Kenya": {
-          "right": 16,
+          "right": 17,
           "wrong": 0
         },
         "Germany": {
-          "right": 8,
-          "wrong": 0
+          "right": 9,
+          "wrong": 3
         },
         "India": {
           "right": 12,
-          "wrong": 0
+          "wrong": 3
         },
         "Canada": {
           "right": 5,
-          "wrong": 0
+          "wrong": 6
         },
         "Japan": {
-          "right": 10,
-          "wrong": 0
+          "right": 11,
+          "wrong": 4
         },
         "Argentina": {
           "right": 8,
           "wrong": 0
         },
         "Australia": {
-          "right": 9,
+          "right": 10,
           "wrong": 0
         },
         "Egypt": {
@@ -39,8 +39,8 @@
           "wrong": 0
         },
         "Brazil": {
-          "right": 2,
-          "wrong": 0
+          "right": 3,
+          "wrong": 3
         },
         "Solomon Islands": {
           "right": 1,
@@ -92,11 +92,79 @@
         },
         "Saint Vincent and the Grenadines": {
           "right": 0,
-          "wrong": 3
+          "wrong": 6
         },
         "Angola": {
           "right": 0,
           "wrong": 3
+        },
+        "Iraq": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Qatar": {
+          "right": 2,
+          "wrong": 0
+        },
+        "Myanmar": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Colombia": {
+          "right": 0,
+          "wrong": 3
+        },
+        "Namibia": {
+          "right": 0,
+          "wrong": 3
+        },
+        "United Kingdom": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Cambodia": {
+          "right": 0,
+          "wrong": 3
+        },
+        "Slovenia": {
+          "right": 0,
+          "wrong": 3
+        },
+        "Trinidad and Tobago": {
+          "right": 0,
+          "wrong": 1
+        },
+        "Czechia": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Greece": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Estonia": {
+          "right": 1,
+          "wrong": 1
+        },
+        "Luxembourg": {
+          "right": 1,
+          "wrong": 0
+        },
+        "China": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Netherlands": {
+          "right": 1,
+          "wrong": 0
+        },
+        "Mexico": {
+          "right": 0,
+          "wrong": 3
+        },
+        "Sudan": {
+          "right": 0,
+          "wrong": 1
         }
       }
     },

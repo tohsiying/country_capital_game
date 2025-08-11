@@ -1,0 +1,1175 @@
+{
+  "generated_at": 1754919370,
+  "rows": [
+    {
+      "country": "Afghanistan",
+      "cca2": "AF",
+      "head_of_state": "Hibatullah Akhundzada",
+      "head_of_government": "Mohammad Hasan Akhund"
+    },
+    {
+      "country": "Albania",
+      "cca2": "AL",
+      "head_of_state": "Bajram Begaj",
+      "head_of_government": "Edi Rama"
+    },
+    {
+      "country": "Algeria",
+      "cca2": "DZ",
+      "head_of_state": "Abd al-Majid Tabboun",
+      "head_of_government": "Nadir al-Arbawi"
+    },
+    {
+      "country": "Andorra",
+      "cca2": "AD",
+      "head_of_state": "Emmanuel Macron; Josep-Lluís Serrano Pentinat",
+      "head_of_government": "Xavier Espot Zamora"
+    },
+    {
+      "country": "Angola",
+      "cca2": "AO",
+      "head_of_state": "João Lourenço",
+      "head_of_government": "João Lourenço"
+    },
+    {
+      "country": "Antigua and Barbuda",
+      "cca2": "AG",
+      "head_of_state": "Charles III",
+      "head_of_government": "Gaston Browne"
+    },
+    {
+      "country": "Argentina",
+      "cca2": "AR",
+      "head_of_state": "Javier Milei",
+      "head_of_government": "Javier Milei"
+    },
+    {
+      "country": "Armenia",
+      "cca2": "AM",
+      "head_of_state": "Vahagn Khachatryan",
+      "head_of_government": "Nikol Pashinyan"
+    },
+    {
+      "country": "Australia",
+      "cca2": "AU",
+      "head_of_state": "Charles III",
+      "head_of_government": "Anthony Albanese"
+    },
+    {
+      "country": "Austria",
+      "cca2": "AT",
+      "head_of_state": "Alexander Van der Bellen",
+      "head_of_government": "Christian Stocker"
+    },
+    {
+      "country": "Azerbaijan",
+      "cca2": "AZ",
+      "head_of_state": "Ilham Aliyev",
+      "head_of_government": "Ali Asadov"
+    },
+    {
+      "country": "Bahamas",
+      "cca2": "BS",
+      "head_of_state": "Charles III",
+      "head_of_government": "Hubert Ingraham; Hubert Minnis; Perry Christie; Philip \"Brave\" Davis"
+    },
+    {
+      "country": "Bahrain",
+      "cca2": "BH",
+      "head_of_state": "Hamad II of Bahrain",
+      "head_of_government": "Salman bin Hamad, Crown Prince of Bahrain"
+    },
+    {
+      "country": "Bangladesh",
+      "cca2": "BD",
+      "head_of_state": "Mohammad Shahabuddin",
+      "head_of_government": "Muhammad Yunus"
+    },
+    {
+      "country": "Barbados",
+      "cca2": "BB",
+      "head_of_state": "Sandra Mason",
+      "head_of_government": "Mia Mottley"
+    },
+    {
+      "country": "Belarus",
+      "cca2": "BY",
+      "head_of_state": "Alexander Lukashenko",
+      "head_of_government": "Alaksandar Turčyn"
+    },
+    {
+      "country": "Belgium",
+      "cca2": "BE",
+      "head_of_state": "Philippe of Belgium",
+      "head_of_government": "Bart De Wever"
+    },
+    {
+      "country": "Belize",
+      "cca2": "BZ",
+      "head_of_state": "Charles III",
+      "head_of_government": "Johnny Briceño"
+    },
+    {
+      "country": "Benin",
+      "cca2": "BJ",
+      "head_of_state": "Patrice Talon",
+      "head_of_government": "Patrice Talon"
+    },
+    {
+      "country": "Bhutan",
+      "cca2": "BT",
+      "head_of_state": "Jigme Khesar Namgyel Wangchuck",
+      "head_of_government": "Tshering Tobgay"
+    },
+    {
+      "country": "Bolivia",
+      "cca2": "BO",
+      "head_of_state": "Luis Arce",
+      "head_of_government": "Luis Arce"
+    },
+    {
+      "country": "Bosnia and Herzegovina",
+      "cca2": "BA",
+      "head_of_state": "Denis Bećirović; Željka Cvijanović; Željko Komšić",
+      "head_of_government": "Borjana Krišto"
+    },
+    {
+      "country": "Botswana",
+      "cca2": "BW",
+      "head_of_state": "Duma Boko",
+      "head_of_government": ""
+    },
+    {
+      "country": "Brazil",
+      "cca2": "BR",
+      "head_of_state": "Luiz Inácio Lula da Silva",
+      "head_of_government": "Luiz Inácio Lula da Silva"
+    },
+    {
+      "country": "Brunei",
+      "cca2": "BN",
+      "head_of_state": "Hassanal Bolkiah I of Brunei",
+      "head_of_government": "Hassanal Bolkiah I of Brunei"
+    },
+    {
+      "country": "Bulgaria",
+      "cca2": "BG",
+      "head_of_state": "Rumen Radev",
+      "head_of_government": "Rosen Zhelyazkov"
+    },
+    {
+      "country": "Burkina Faso",
+      "cca2": "BF",
+      "head_of_state": "Ibrahim Traoré",
+      "head_of_government": "Apollinaire Joachim Kyélem de Tambèla"
+    },
+    {
+      "country": "Burundi",
+      "cca2": "BI",
+      "head_of_state": "Évariste Ndayishimiye",
+      "head_of_government": "Gervais Ndirakobuca"
+    },
+    {
+      "country": "Cambodia",
+      "cca2": "KH",
+      "head_of_state": "Norodom Sihamoni",
+      "head_of_government": "Hun Manet"
+    },
+    {
+      "country": "Cameroon",
+      "cca2": "CM",
+      "head_of_state": "Paul Biya",
+      "head_of_government": "Joseph Ngute"
+    },
+    {
+      "country": "Canada",
+      "cca2": "CA",
+      "head_of_state": "Charles III",
+      "head_of_government": "Mark Carney"
+    },
+    {
+      "country": "Cape Verde",
+      "cca2": "CV",
+      "head_of_state": "José Maria Neves",
+      "head_of_government": "Ulisses Correia e Silva"
+    },
+    {
+      "country": "Central African Republic",
+      "cca2": "CF",
+      "head_of_state": "Faustin-Archange Touadéra",
+      "head_of_government": "Félix Moloua"
+    },
+    {
+      "country": "Chad",
+      "cca2": "TD",
+      "head_of_state": "Mahamat Déby Itno",
+      "head_of_government": "Idriss Déby"
+    },
+    {
+      "country": "Chile",
+      "cca2": "CL",
+      "head_of_state": "Gabriel Boric",
+      "head_of_government": "Gabriel Boric"
+    },
+    {
+      "country": "China",
+      "cca2": "CN",
+      "head_of_state": "Xi Jinping",
+      "head_of_government": "Li Qiang"
+    },
+    {
+      "country": "Colombia",
+      "cca2": "CO",
+      "head_of_state": "Gustavo Petro",
+      "head_of_government": "Gustavo Petro"
+    },
+    {
+      "country": "Comoros",
+      "cca2": "KM",
+      "head_of_state": "Azali Assoumani",
+      "head_of_government": "Azali Assoumani"
+    },
+    {
+      "country": "Costa Rica",
+      "cca2": "CR",
+      "head_of_state": "Rodrigo Chaves",
+      "head_of_government": "Rodrigo Chaves"
+    },
+    {
+      "country": "Croatia",
+      "cca2": "HR",
+      "head_of_state": "Zoran Milanović",
+      "head_of_government": "Andrej Plenković"
+    },
+    {
+      "country": "Cuba",
+      "cca2": "CU",
+      "head_of_state": "Miguel Díaz-Canel",
+      "head_of_government": "Manuel Marrero Cruz"
+    },
+    {
+      "country": "Cyprus",
+      "cca2": "CY",
+      "head_of_state": "Nicos Christodoulides",
+      "head_of_government": "Nicos Christodoulides"
+    },
+    {
+      "country": "Czechia",
+      "cca2": "CZ",
+      "head_of_state": "Petr Pavel",
+      "head_of_government": "Petr Fiala"
+    },
+    {
+      "country": "DR Congo",
+      "cca2": "CD",
+      "head_of_state": "Félix Tshisekedi",
+      "head_of_government": "Ilunga Ilunkamba Sylvestre"
+    },
+    {
+      "country": "Denmark",
+      "cca2": "DK",
+      "head_of_state": "Frederik X of Denmark",
+      "head_of_government": "Mette Frederiksen"
+    },
+    {
+      "country": "Djibouti",
+      "cca2": "DJ",
+      "head_of_state": "Ismail Omar Guelleh",
+      "head_of_government": "Abdoulkader Kamil Mohamed; Dileita Mohamed Dileita"
+    },
+    {
+      "country": "Dominica",
+      "cca2": "DM",
+      "head_of_state": "Charles Savarin",
+      "head_of_government": "Roosevelt Skerrit"
+    },
+    {
+      "country": "Dominican Republic",
+      "cca2": "DO",
+      "head_of_state": "Luis Abinader",
+      "head_of_government": "Luis Abinader"
+    },
+    {
+      "country": "Ecuador",
+      "cca2": "EC",
+      "head_of_state": "Daniel Noboa",
+      "head_of_government": "Daniel Noboa"
+    },
+    {
+      "country": "Egypt",
+      "cca2": "EG",
+      "head_of_state": "Abdel Fattah el-Sisi",
+      "head_of_government": "Mostafa Madbouly"
+    },
+    {
+      "country": "El Salvador",
+      "cca2": "SV",
+      "head_of_state": "Nayib Bukele",
+      "head_of_government": "Nayib Bukele"
+    },
+    {
+      "country": "Equatorial Guinea",
+      "cca2": "GQ",
+      "head_of_state": "Teodoro Obiang",
+      "head_of_government": "Manuel Osa Nsue Nsua"
+    },
+    {
+      "country": "Eritrea",
+      "cca2": "ER",
+      "head_of_state": "Isaias Afwerki",
+      "head_of_government": "Isaias Afwerki"
+    },
+    {
+      "country": "Estonia",
+      "cca2": "EE",
+      "head_of_state": "Alar Karis",
+      "head_of_government": "Kristen Michal"
+    },
+    {
+      "country": "Eswatini",
+      "cca2": "SZ",
+      "head_of_state": "Mswati III",
+      "head_of_government": "Russell Dlamini"
+    },
+    {
+      "country": "Ethiopia",
+      "cca2": "ET",
+      "head_of_state": "Taye Atske Selassie",
+      "head_of_government": "Abiy Ahmed"
+    },
+    {
+      "country": "Fiji",
+      "cca2": "FJ",
+      "head_of_state": "Wiliame Katonivere",
+      "head_of_government": "Sitiveni Rabuka"
+    },
+    {
+      "country": "Finland",
+      "cca2": "FI",
+      "head_of_state": "Alexander Stubb",
+      "head_of_government": "Petteri Orpo"
+    },
+    {
+      "country": "France",
+      "cca2": "FR",
+      "head_of_state": "Emmanuel Macron",
+      "head_of_government": "François Bayrou"
+    },
+    {
+      "country": "Gabon",
+      "cca2": "GA",
+      "head_of_state": "Brice Clotaire Oligui Nguema",
+      "head_of_government": "Raymond Ndong Sima"
+    },
+    {
+      "country": "Gambia",
+      "cca2": "GM",
+      "head_of_state": "Adama Barrow",
+      "head_of_government": "Adama Barrow"
+    },
+    {
+      "country": "Georgia",
+      "cca2": "GE",
+      "head_of_state": "Salome Zourabichvili",
+      "head_of_government": "Irakli Kobakhidze"
+    },
+    {
+      "country": "Germany",
+      "cca2": "DE",
+      "head_of_state": "Frank-Walter Steinmeier",
+      "head_of_government": "Friedrich Merz"
+    },
+    {
+      "country": "Ghana",
+      "cca2": "GH",
+      "head_of_state": "John Mahama",
+      "head_of_government": "Nana Akufo-Addo"
+    },
+    {
+      "country": "Greece",
+      "cca2": "GR",
+      "head_of_state": "Konstantinos Tasoulas",
+      "head_of_government": "Kyriakos Mitsotakis"
+    },
+    {
+      "country": "Grenada",
+      "cca2": "GD",
+      "head_of_state": "Charles III",
+      "head_of_government": "Dickon Mitchell"
+    },
+    {
+      "country": "Guatemala",
+      "cca2": "GT",
+      "head_of_state": "Bernardo Arévalo de León",
+      "head_of_government": "Bernardo Arévalo de León"
+    },
+    {
+      "country": "Guinea",
+      "cca2": "GN",
+      "head_of_state": "Mamady Doumbouya",
+      "head_of_government": "Bah Oury"
+    },
+    {
+      "country": "Guyana",
+      "cca2": "GY",
+      "head_of_state": "Irfaan Ali",
+      "head_of_government": "Mark Phillips"
+    },
+    {
+      "country": "Haiti",
+      "cca2": "HT",
+      "head_of_state": "Transitional Presidential Council",
+      "head_of_government": "Alix Didier Fils-Aimé"
+    },
+    {
+      "country": "Honduras",
+      "cca2": "HN",
+      "head_of_state": "Xiomara Castro",
+      "head_of_government": "Xiomara Castro"
+    },
+    {
+      "country": "Hungary",
+      "cca2": "HU",
+      "head_of_state": "Tamás Sulyok",
+      "head_of_government": "Viktor Orbán"
+    },
+    {
+      "country": "Iceland",
+      "cca2": "IS",
+      "head_of_state": "Halla Tómasdóttir",
+      "head_of_government": "Kristrún Mjöll Frostadóttir"
+    },
+    {
+      "country": "India",
+      "cca2": "IN",
+      "head_of_state": "Droupadi Murmu",
+      "head_of_government": "Narendra Modi"
+    },
+    {
+      "country": "Indonesia",
+      "cca2": "ID",
+      "head_of_state": "Prabowo Subianto",
+      "head_of_government": "Prabowo Subianto"
+    },
+    {
+      "country": "Iran",
+      "cca2": "IR",
+      "head_of_state": "Ali Khamenei",
+      "head_of_government": "Masoud Pezeshkian"
+    },
+    {
+      "country": "Iraq",
+      "cca2": "IQ",
+      "head_of_state": "Abdul Latif Rashid",
+      "head_of_government": "Muhammad Shia' al-Sudani"
+    },
+    {
+      "country": "Ireland",
+      "cca2": "IE",
+      "head_of_state": "Michael D. Higgins",
+      "head_of_government": "Micheál Martin"
+    },
+    {
+      "country": "Israel",
+      "cca2": "IL",
+      "head_of_state": "Isaac Herzog",
+      "head_of_government": "Benjamin Netanyahu"
+    },
+    {
+      "country": "Italy",
+      "cca2": "IT",
+      "head_of_state": "Sergio Mattarella",
+      "head_of_government": "Giorgia Meloni"
+    },
+    {
+      "country": "Ivory Coast",
+      "cca2": "CI",
+      "head_of_state": "Alassane Ouattara",
+      "head_of_government": "Robert Beugré Mambé"
+    },
+    {
+      "country": "Jamaica",
+      "cca2": "JM",
+      "head_of_state": "Charles III",
+      "head_of_government": "Andrew Holness"
+    },
+    {
+      "country": "Japan",
+      "cca2": "JP",
+      "head_of_state": "Naruhito",
+      "head_of_government": "Shigeru Ishiba"
+    },
+    {
+      "country": "Jordan",
+      "cca2": "JO",
+      "head_of_state": "Abdullah II of Jordan",
+      "head_of_government": "Bisher Al-Khasawneh"
+    },
+    {
+      "country": "Kazakhstan",
+      "cca2": "KZ",
+      "head_of_state": "Qasym-Jomart Toqaev",
+      "head_of_government": "Älihan Smaiylov"
+    },
+    {
+      "country": "Kenya",
+      "cca2": "KE",
+      "head_of_state": "William Ruto",
+      "head_of_government": "William Ruto"
+    },
+    {
+      "country": "Kiribati",
+      "cca2": "KI",
+      "head_of_state": "Taneti Maamau",
+      "head_of_government": "Taneti Maamau"
+    },
+    {
+      "country": "Kosovo",
+      "cca2": "XK",
+      "head_of_state": "Vjosa Osmani",
+      "head_of_government": "Albin Kurti"
+    },
+    {
+      "country": "Kuwait",
+      "cca2": "KW",
+      "head_of_state": "Mishal Al-Ahmad Al-Jaber Al-Sabah",
+      "head_of_government": "Sabah Al-Khalid Al-Sabah"
+    },
+    {
+      "country": "Kyrgyzstan",
+      "cca2": "KG",
+      "head_of_state": "Sadyr Japarov",
+      "head_of_government": "Adylbek Kasymaliev; Akylbek Japarov; Artyom Novikov; Kubatbek Boronov; Muhammetkaliy Abulgaziyev; Sadyr Japarov; Sapar Isakov; Sooronbay Jeenbekov; Ulukbek Maripov"
+    },
+    {
+      "country": "Laos",
+      "cca2": "LA",
+      "head_of_state": "Thongloun Sisoulith",
+      "head_of_government": "Phankham Viphavan"
+    },
+    {
+      "country": "Latvia",
+      "cca2": "LV",
+      "head_of_state": "Edgars Rinkēvičs",
+      "head_of_government": "Evika Siliņa"
+    },
+    {
+      "country": "Lebanon",
+      "cca2": "LB",
+      "head_of_state": "Joseph Aoun",
+      "head_of_government": "Nawaf Salam"
+    },
+    {
+      "country": "Lesotho",
+      "cca2": "LS",
+      "head_of_state": "Letsie III of Lesotho",
+      "head_of_government": "Sam Matekane"
+    },
+    {
+      "country": "Liberia",
+      "cca2": "LR",
+      "head_of_state": "George Weah; Joseph Boakai",
+      "head_of_government": "Joseph Boakai"
+    },
+    {
+      "country": "Libya",
+      "cca2": "LY",
+      "head_of_state": "Mohamed al-Menfi",
+      "head_of_government": "Abd al-Hamid Dbeibeh"
+    },
+    {
+      "country": "Liechtenstein",
+      "cca2": "LI",
+      "head_of_state": "Hans-Adam II, Prince of Liechtenstein",
+      "head_of_government": "Daniel Risch"
+    },
+    {
+      "country": "Lithuania",
+      "cca2": "LT",
+      "head_of_state": "Gitanas Nausėda",
+      "head_of_government": "Gintautas Paluckas"
+    },
+    {
+      "country": "Luxembourg",
+      "cca2": "LU",
+      "head_of_state": "Henri, Grand Duke of Luxembourg",
+      "head_of_government": "Luc Frieden"
+    },
+    {
+      "country": "Madagascar",
+      "cca2": "MG",
+      "head_of_state": "Andry Rajoelina",
+      "head_of_government": "Christian Ntsay"
+    },
+    {
+      "country": "Malawi",
+      "cca2": "MW",
+      "head_of_state": "Lazarus Chakwera",
+      "head_of_government": "Lazarus Chakwera"
+    },
+    {
+      "country": "Malaysia",
+      "cca2": "MY",
+      "head_of_state": "Ibrahim Iskandar of Johor",
+      "head_of_government": "Anwar Ibrahim"
+    },
+    {
+      "country": "Maldives",
+      "cca2": "MV",
+      "head_of_state": "Mohamed Muizzu",
+      "head_of_government": "Mohamed Muizzu"
+    },
+    {
+      "country": "Mali",
+      "cca2": "ML",
+      "head_of_state": "Assimi Goïta",
+      "head_of_government": "Choguel Kokalla Maïga"
+    },
+    {
+      "country": "Malta",
+      "cca2": "MT",
+      "head_of_state": "Myriam Spiteri Debono",
+      "head_of_government": "Robert Abela"
+    },
+    {
+      "country": "Marshall Islands",
+      "cca2": "MH",
+      "head_of_state": "Hilda Heine",
+      "head_of_government": "Hilda Heine"
+    },
+    {
+      "country": "Mauritania",
+      "cca2": "MR",
+      "head_of_state": "Mohamed Ould Ghazouani",
+      "head_of_government": "Moctar Ould Djay"
+    },
+    {
+      "country": "Mauritius",
+      "cca2": "MU",
+      "head_of_state": "Dharam Gokhool",
+      "head_of_government": "Pravind Jugnauth"
+    },
+    {
+      "country": "Mexico",
+      "cca2": "MX",
+      "head_of_state": "Claudia Sheinbaum",
+      "head_of_government": "Claudia Sheinbaum"
+    },
+    {
+      "country": "Micronesia",
+      "cca2": "FM",
+      "head_of_state": "Wesley Simina",
+      "head_of_government": "Wesley Simina"
+    },
+    {
+      "country": "Moldova",
+      "cca2": "MD",
+      "head_of_state": "Maia Sandu",
+      "head_of_government": "Dorin Recean"
+    },
+    {
+      "country": "Monaco",
+      "cca2": "MC",
+      "head_of_state": "Albert II, Prince of Monaco",
+      "head_of_government": "Isabelle Berro-Amadeï"
+    },
+    {
+      "country": "Mongolia",
+      "cca2": "MN",
+      "head_of_state": "Khurelsukh Ukhnaa",
+      "head_of_government": "Luvsannamsrain Oyun-Erdene"
+    },
+    {
+      "country": "Montenegro",
+      "cca2": "ME",
+      "head_of_state": "Jakov Milatović",
+      "head_of_government": "Milojko Spajić"
+    },
+    {
+      "country": "Morocco",
+      "cca2": "MA",
+      "head_of_state": "Mohammed VI of Morocco",
+      "head_of_government": "Aziz Akhannouch"
+    },
+    {
+      "country": "Mozambique",
+      "cca2": "MZ",
+      "head_of_state": "Daniel Chapo",
+      "head_of_government": "Maria Benvinda Levy"
+    },
+    {
+      "country": "Myanmar",
+      "cca2": "MM",
+      "head_of_state": "Myint Swe",
+      "head_of_government": "Min Aung Hlaing"
+    },
+    {
+      "country": "Namibia",
+      "cca2": "NA",
+      "head_of_state": "Netumbo Nandi-Ndaitwah",
+      "head_of_government": "Elijah Ngurare"
+    },
+    {
+      "country": "Nauru",
+      "cca2": "NR",
+      "head_of_state": "David Adeang",
+      "head_of_government": "David Adeang"
+    },
+    {
+      "country": "Nepal",
+      "cca2": "NP",
+      "head_of_state": "Ram Chandra Poudel",
+      "head_of_government": "Pushpa Kamal Dahal"
+    },
+    {
+      "country": "Netherlands",
+      "cca2": "NL",
+      "head_of_state": "William Alexander of the Netherlands",
+      "head_of_government": "Dick Schoof"
+    },
+    {
+      "country": "New Zealand",
+      "cca2": "NZ",
+      "head_of_state": "Charles III",
+      "head_of_government": "Christopher Luxon"
+    },
+    {
+      "country": "Nicaragua",
+      "cca2": "NI",
+      "head_of_state": "Daniel Ortega",
+      "head_of_government": "Daniel Ortega"
+    },
+    {
+      "country": "Niger",
+      "cca2": "NE",
+      "head_of_state": "Abdourahamane Tchiani",
+      "head_of_government": "Ali Lamine Zeine"
+    },
+    {
+      "country": "Nigeria",
+      "cca2": "NG",
+      "head_of_state": "Bola Ahmed Tinubu",
+      "head_of_government": "Bola Ahmed Tinubu"
+    },
+    {
+      "country": "North Korea",
+      "cca2": "KP",
+      "head_of_state": "Kim Jong-un",
+      "head_of_government": "Pak Thae-song"
+    },
+    {
+      "country": "North Macedonia",
+      "cca2": "MK",
+      "head_of_state": "Gordana Siljanovska-Davkova",
+      "head_of_government": "Hristijan Mickoski"
+    },
+    {
+      "country": "Norway",
+      "cca2": "NO",
+      "head_of_state": "Harald V of Norway",
+      "head_of_government": "Jonas Gahr Støre"
+    },
+    {
+      "country": "Oman",
+      "cca2": "OM",
+      "head_of_state": "Haitham bin Tarik Al Said",
+      "head_of_government": "Haitham bin Tarik Al Said"
+    },
+    {
+      "country": "Pakistan",
+      "cca2": "PK",
+      "head_of_state": "Asif Ali Zardari",
+      "head_of_government": "Shehbaz Sharif"
+    },
+    {
+      "country": "Palau",
+      "cca2": "PW",
+      "head_of_state": "Surangel Whipps Jr.",
+      "head_of_government": "Surangel Whipps Jr."
+    },
+    {
+      "country": "Palestine",
+      "cca2": "PS",
+      "head_of_state": "Mahmoud Abbas",
+      "head_of_government": "Mohammad Mustafa"
+    },
+    {
+      "country": "Panama",
+      "cca2": "PA",
+      "head_of_state": "José Raúl Mulino",
+      "head_of_government": "José Raúl Mulino"
+    },
+    {
+      "country": "Papua New Guinea",
+      "cca2": "PG",
+      "head_of_state": "Charles III",
+      "head_of_government": "James Marape"
+    },
+    {
+      "country": "Paraguay",
+      "cca2": "PY",
+      "head_of_state": "Santiago Peña Palacios",
+      "head_of_government": "Santiago Peña Palacios"
+    },
+    {
+      "country": "Peru",
+      "cca2": "PE",
+      "head_of_state": "Dina Boluarte",
+      "head_of_government": "Dina Boluarte"
+    },
+    {
+      "country": "Philippines",
+      "cca2": "PH",
+      "head_of_state": "Bongbong Marcos",
+      "head_of_government": "Bongbong Marcos"
+    },
+    {
+      "country": "Poland",
+      "cca2": "PL",
+      "head_of_state": "Karol Nawrocki",
+      "head_of_government": "Donald Tusk"
+    },
+    {
+      "country": "Portugal",
+      "cca2": "PT",
+      "head_of_state": "Marcelo Rebelo de Sousa",
+      "head_of_government": "Luís Montenegro"
+    },
+    {
+      "country": "Qatar",
+      "cca2": "QA",
+      "head_of_state": "Tamim bin Hamad Al",
+      "head_of_government": "Mohammed bin Abdulrahman Al Thani"
+    },
+    {
+      "country": "Republic of the Congo",
+      "cca2": "CG",
+      "head_of_state": "Denis Sassou-Nguesso",
+      "head_of_government": "Anatole Collinet Makosso"
+    },
+    {
+      "country": "Romania",
+      "cca2": "RO",
+      "head_of_state": "Nicușor Dan",
+      "head_of_government": "Ilie Bolojan"
+    },
+    {
+      "country": "Russia",
+      "cca2": "RU",
+      "head_of_state": "Vladimir Putin",
+      "head_of_government": "Mikhail Mishustin"
+    },
+    {
+      "country": "Rwanda",
+      "cca2": "RW",
+      "head_of_state": "Paul Kagame",
+      "head_of_government": "Édouard Ngirente"
+    },
+    {
+      "country": "Saint Kitts and Nevis",
+      "cca2": "KN",
+      "head_of_state": "Charles III",
+      "head_of_government": "Terrance Drew"
+    },
+    {
+      "country": "Saint Lucia",
+      "cca2": "LC",
+      "head_of_state": "Charles III",
+      "head_of_government": "Allen Chastanet"
+    },
+    {
+      "country": "Saint Vincent and the Grenadines",
+      "cca2": "VC",
+      "head_of_state": "Charles III",
+      "head_of_government": "Ralph Gonsalves"
+    },
+    {
+      "country": "Samoa",
+      "cca2": "WS",
+      "head_of_state": "Va'aletoa Sualauvi II",
+      "head_of_government": "Fiamē Naomi Mataʻafa; Tuilaʻepa Saʻilele Malielegaoi"
+    },
+    {
+      "country": "San Marino",
+      "cca2": "SM",
+      "head_of_state": "Denise Bronzetti; Italo Righi",
+      "head_of_government": ""
+    },
+    {
+      "country": "Saudi Arabia",
+      "cca2": "SA",
+      "head_of_state": "Salman bin Abdulaziz Al Saud",
+      "head_of_government": "Salman bin Abdulaziz Al Saud"
+    },
+    {
+      "country": "Senegal",
+      "cca2": "SN",
+      "head_of_state": "Bassirou Diomaye Faye",
+      "head_of_government": "Bassirou Diomaye Faye"
+    },
+    {
+      "country": "Serbia",
+      "cca2": "RS",
+      "head_of_state": "Aleksandar Vučić",
+      "head_of_government": "Đuro Macut"
+    },
+    {
+      "country": "Seychelles",
+      "cca2": "SC",
+      "head_of_state": "Wavel Ramkalawan",
+      "head_of_government": "Wavel Ramkalawan"
+    },
+    {
+      "country": "Sierra Leone",
+      "cca2": "SL",
+      "head_of_state": "Julius Maada Bio",
+      "head_of_government": "David Sengeh"
+    },
+    {
+      "country": "Singapore",
+      "cca2": "SG",
+      "head_of_state": "Tharman Shanmugaratnam",
+      "head_of_government": "Lawrence Wong"
+    },
+    {
+      "country": "Slovakia",
+      "cca2": "SK",
+      "head_of_state": "Peter Pellegrini",
+      "head_of_government": "Robert Fico"
+    },
+    {
+      "country": "Slovenia",
+      "cca2": "SI",
+      "head_of_state": "Nataša Pirc Musar",
+      "head_of_government": "Robert Golob"
+    },
+    {
+      "country": "Solomon Islands",
+      "cca2": "SB",
+      "head_of_state": "Charles III",
+      "head_of_government": "Jeremiah Manele"
+    },
+    {
+      "country": "Somalia",
+      "cca2": "SO",
+      "head_of_state": "Hassan Sheikh Mohamud",
+      "head_of_government": "Mohamed Hussein Roble"
+    },
+    {
+      "country": "South Africa",
+      "cca2": "ZA",
+      "head_of_state": "Cyril Ramaphosa",
+      "head_of_government": "Cyril Ramaphosa"
+    },
+    {
+      "country": "South Korea",
+      "cca2": "KR",
+      "head_of_state": "Lee Jae Myung",
+      "head_of_government": "Lee Ju-ho"
+    },
+    {
+      "country": "South Sudan",
+      "cca2": "SS",
+      "head_of_state": "Salva Kiir Mayardit",
+      "head_of_government": "Salva Kiir Mayardit"
+    },
+    {
+      "country": "Spain",
+      "cca2": "ES",
+      "head_of_state": "Felipe VI of Spain",
+      "head_of_government": "Pedro Sánchez"
+    },
+    {
+      "country": "Sri Lanka",
+      "cca2": "LK",
+      "head_of_state": "Anura Kumara Dissanayake",
+      "head_of_government": "Harini Amarasuriya"
+    },
+    {
+      "country": "Sudan",
+      "cca2": "SD",
+      "head_of_state": "Abdel Fattah al-Burhan",
+      "head_of_government": "Abdalla Hamdok"
+    },
+    {
+      "country": "Suriname",
+      "cca2": "SR",
+      "head_of_state": "Chan Santokhi",
+      "head_of_government": "Chan Santokhi"
+    },
+    {
+      "country": "Sweden",
+      "cca2": "SE",
+      "head_of_state": "Carl XVI Gustaf of Sweden",
+      "head_of_government": "Ulf Kristersson"
+    },
+    {
+      "country": "Switzerland",
+      "cca2": "CH",
+      "head_of_state": "Swiss Federal Council",
+      "head_of_government": "Swiss Federal Council"
+    },
+    {
+      "country": "Syria",
+      "cca2": "SY",
+      "head_of_state": "",
+      "head_of_government": ""
+    },
+    {
+      "country": "São Tomé and Príncipe",
+      "cca2": "ST",
+      "head_of_state": "Carlos Vila Nova",
+      "head_of_government": "Américo Ramos"
+    },
+    {
+      "country": "Taiwan",
+      "cca2": "TW",
+      "head_of_state": "Lai Ching-te",
+      "head_of_government": "Cho Jung-tai"
+    },
+    {
+      "country": "Tajikistan",
+      "cca2": "TJ",
+      "head_of_state": "Emomali Rahmon",
+      "head_of_government": "Kokhir Rasulzoda"
+    },
+    {
+      "country": "Tanzania",
+      "cca2": "TZ",
+      "head_of_state": "Samia Suluhu Hassan",
+      "head_of_government": "Samia Suluhu Hassan"
+    },
+    {
+      "country": "Thailand",
+      "cca2": "TH",
+      "head_of_state": "Vajiralongkorn",
+      "head_of_government": "Paetongtarn Shinawatra"
+    },
+    {
+      "country": "Timor-Leste",
+      "cca2": "TL",
+      "head_of_state": "José Ramos-Horta",
+      "head_of_government": "Xanana Gusmão"
+    },
+    {
+      "country": "Togo",
+      "cca2": "TG",
+      "head_of_state": "Faure Essozimna Gnassingbé",
+      "head_of_government": "Faure Essozimna Gnassingbé"
+    },
+    {
+      "country": "Tonga",
+      "cca2": "TO",
+      "head_of_state": "Tupou VI of Tonga",
+      "head_of_government": "ʻAisake Eke"
+    },
+    {
+      "country": "Trinidad and Tobago",
+      "cca2": "TT",
+      "head_of_state": "Christine Kangaloo",
+      "head_of_government": "Kamla Persad-Bissessar"
+    },
+    {
+      "country": "Tunisia",
+      "cca2": "TN",
+      "head_of_state": "Kais Saied",
+      "head_of_government": "Sarra Zaafrani"
+    },
+    {
+      "country": "Turkey",
+      "cca2": "TR",
+      "head_of_state": "Recep Tayyip Erdoğan",
+      "head_of_government": "Recep Tayyip Erdoğan"
+    },
+    {
+      "country": "Turkmenistan",
+      "cca2": "TM",
+      "head_of_state": "Serdar Berdimuhamedow",
+      "head_of_government": "Serdar Berdimuhamedow"
+    },
+    {
+      "country": "Tuvalu",
+      "cca2": "TV",
+      "head_of_state": "Charles III",
+      "head_of_government": "Feleti Teo"
+    },
+    {
+      "country": "Uganda",
+      "cca2": "UG",
+      "head_of_state": "Yoweri Museveni",
+      "head_of_government": "Robinah Nabbanja"
+    },
+    {
+      "country": "Ukraine",
+      "cca2": "UA",
+      "head_of_state": "Volodymyr Zelenskyy",
+      "head_of_government": "Yulia Svyrydenko"
+    },
+    {
+      "country": "United Arab Emirates",
+      "cca2": "AE",
+      "head_of_state": "Mohammed Bin Zayed Al Nahyan",
+      "head_of_government": "Mohammed bin Rashid Al Maktoum"
+    },
+    {
+      "country": "United Kingdom",
+      "cca2": "GB",
+      "head_of_state": "Charles III",
+      "head_of_government": "Keir Starmer"
+    },
+    {
+      "country": "United States",
+      "cca2": "US",
+      "head_of_state": "Q22686",
+      "head_of_government": "Q22686"
+    },
+    {
+      "country": "Uruguay",
+      "cca2": "UY",
+      "head_of_state": "Yamandú Orsi",
+      "head_of_government": "Yamandú Orsi"
+    },
+    {
+      "country": "Uzbekistan",
+      "cca2": "UZ",
+      "head_of_state": "Shavkat Mirziyoyev",
+      "head_of_government": "Abdulla Nigmatovich Aripov"
+    },
+    {
+      "country": "Vanuatu",
+      "cca2": "VU",
+      "head_of_state": "Nikenike Vurobaravu",
+      "head_of_government": "Bob Loughman"
+    },
+    {
+      "country": "Venezuela",
+      "cca2": "VE",
+      "head_of_state": "Juan Guaidó; Nicolás Maduro",
+      "head_of_government": "Nicolás Maduro"
+    },
+    {
+      "country": "Vietnam",
+      "cca2": "VN",
+      "head_of_state": "Tô Lâm",
+      "head_of_government": "Phạm Minh Chính"
+    },
+    {
+      "country": "Yemen",
+      "cca2": "YE",
+      "head_of_state": "Rashad al-Alimi",
+      "head_of_government": "Maeen Abdulmalik Saeed"
+    },
+    {
+      "country": "Zambia",
+      "cca2": "ZM",
+      "head_of_state": "Hakainde Hichilema",
+      "head_of_government": "Edgar Lungu"
+    },
+    {
+      "country": "Zimbabwe",
+      "cca2": "ZW",
+      "head_of_state": "Emmerson Mnangagwa",
+      "head_of_government": "Emmerson Mnangagwa"
+    }
+  ]
+}
