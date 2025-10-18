@@ -62,9 +62,7 @@ def load_full_country_dataset() -> List[Dict]:
             params={
                 # Request extra facts to power varied clues
                 "fields": (
-                    "name,capital,region,subregion,unMember,cca2,flags,"
-                    "population,area,landlocked,borders,languages,currencies,"
-                    "fifa,timezones,tld"
+                    "name,capital,region,subregion,unMember,flags"
                 ),
             },
             timeout=20,
@@ -89,7 +87,6 @@ def load_full_country_dataset() -> List[Dict]:
 
             continent = _continent_from_region(item.get("region", ""), item.get("subregion", ""))
 
-            cca2 = (item.get("cca2") or "").strip().upper()
             flags = item.get("flags") or {}
             flag_png = (flags.get("png") or "").strip()
             flag_svg = (flags.get("svg") or "").strip()
@@ -118,22 +115,7 @@ def load_full_country_dataset() -> List[Dict]:
                 "continent": continent,
                 "avatar": avatar,
                 "political_fact": political_fact,
-                "cca2": cca2,
-                "flag": flag_png or flag_svg,
-                # Optional enrichment for clues (best-effort)
-                "population": int(item.get("population") or 0),
-                "area_km2": float(item.get("area") or 0.0),
-                "landlocked": bool(item.get("landlocked", False)),
-                "borders": list(item.get("borders") or []),
-                "languages": list((item.get("languages") or {}).values()),
-                "currencies": [
-                    c.get("name")
-                    for c in (item.get("currencies") or {}).values()
-                    if isinstance(c, dict) and c.get("name")
-                ],
-                "fifa": (item.get("fifa") or "").strip(),
-                "timezones": list(item.get("timezones") or []),
-                "tld": list(item.get("tld") or []),
+                "flag": flag_png or flag_svg
             })
 
         # Deduplicate by country name and sort
@@ -144,10 +126,13 @@ def load_full_country_dataset() -> List[Dict]:
 
         # Sanity filter: return only if we reached a plausible size (e.g., > 190)
         if len(result) >= 190:
+            st.session_state["using_country_fallback"] = False
             return result
         # Fallback to sample if something went wrong
+        st.session_state["using_country_fallback"] = True
         return SAMPLE_COUNTRIES
     except Exception:
+        st.session_state["using_country_fallback"] = True
         return SAMPLE_COUNTRIES
 
 # Primary dataset used by the app
@@ -788,6 +773,15 @@ if st.session_state["show_intro"]:
     st.stop()
 
 st.title("🌍 Capital Gains: World Edition")
+
+# Warning banner if fallback/sample set is active
+# if st.session_state.get("using_country_fallback", False):
+    # st.error("⚠️ Country list fallback: Showing only demo countries due to error reaching the full country dataset. Some features may be limited! Try 'Reload Countries' below to attempt to load all 197.")
+    # if st.button("Reload Countries", help="Try to fetch the full country dataset and clear the cache.", type="primary"):
+        # st.cache_data.clear()
+        # st.session_state.pop("using_country_fallback", None)
+        # st.rerun()
+
 st.write("Learn country capitals with a playful leader avatar and track progress by continent.")
 
 # Global progress bar (toward 197 countries)
